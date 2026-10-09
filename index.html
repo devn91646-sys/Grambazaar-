@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GramBazaar | Shahdol</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{font-family:Arial,sans-serif;background:#fffaf2;color:#29251e}
+header{position:sticky;top:0;z-index:99;background:#19221b;color:white;padding:15px 5%;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;box-shadow:0 4px 15px #0002}
+.logo{font-size:27px;font-weight:bold;color:#ffb65f}
+.logo span{color:white}
+nav{display:flex;gap:18px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-size:14px}
+nav a:hover{color:#ffb65f}
+.btn{display:inline-block;border:none;border-radius:30px;padding:12px 19px;background:#16823e;color:white;text-decoration:none;font-weight:bold;cursor:pointer;transition:.25s}
+.btn:hover{background:#0d642d;transform:translateY(-3px)}
+.hero{min-height:520px;display:flex;align-items:center;padding:65px 7%;color:white;background:linear-gradient(90deg,#151c17ed 0%,#151c1790 58%,#151c1720),url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85') center/cover;animation:fade .9s ease}
+.hero-content{max-width:650px;animation:rise 1s ease}
+.hero small{color:#ffd29b;font-size:16px}
+.hero h1{font-size:clamp(38px,6vw,70px);margin:20px 0;line-height:1.12}
+.hero h1 span{color:#ffb65f}
+.hero p{font-size:18px;line-height:1.8;margin-bottom:25px}
+.location{margin-top:23px}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+section{padding:55px 5%}
+.heading{text-align:center;font-size:32px;margin-bottom:12px}
+.sub{text-align:center;color:#777;margin-bottom:30px;line-height:1.7}
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.cat{background:white;border:1px solid #eee0cd;border-radius:16px;overflow:hidden;text-align:center;transition:.3s}
+.cat:hover,.product:hover{transform:translateY(-6px);box-shadow:0 12px 28px #6b48221c}
+.cat img{width:100%;height:190px;object-fit:cover}
+.cat div{padding:18px 10px}
+.cat h3{margin-bottom:10px}
+.cat p{font-size:14px;color:#777;line-height:1.6;margin-bottom:14px}
+.shop{background:#f7f0e4}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:28px}
+input,select{padding:13px 16px;border:1px solid #dfd1bc;border-radius:25px;font-size:15px;background:white;max-width:100%}
+input{width:330px}
+.group-title{font-size:25px;margin:32px 0 18px;border-left:5px solid #b56c30;padding-left:12px}
+.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:19px}
+.product{background:white;border:1px solid #eadfce;border-radius:15px;overflow:hidden;transition:.3s;min-width:0}
+.product img{width:100%;height:205px;object-fit:cover;background:#eee}
+.product-info{padding:15px}
+.product h3{font-size:17px;margin-bottom:9px}
+.product p{font-size:13px;line-height:1.6;color:#777;min-height:39px}
+.price{font-size:21px;font-weight:bold;color:#925020;margin:13px 0}
+.order{width:100%;font-size:13px;padding:12px 5px}
+.about{background:#eaf0e2;border-radius:20px;text-align:center;padding:35px 20px}
+.about p{max-width:760px;margin:15px auto;line-height:1.9;color:#555}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:25px}
+.feature{background:white;border-radius:14px;padding:22px}
+.feature h3{margin:10px 0}
+footer{background:#19221b;color:white;text-align:center;padding:40px 5%}
+footer p{color:#ddd;margin:12px 0;line-height:1.7}
+footer a{color:#ffbf75}
+.wa-float{position:fixed;right:17px;bottom:18px;z-index:100;box-shadow:0 4px 14px #0003}
+.note{text-align:center;color:#777;font-size:13px;margin-top:20px}
+@media(max-width:900px){
+ .categories,.products{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .hero{min-height:450px}
+ .cat img{height:165px}
+}
+@media(max-width:520px){
+ header{justify-content:center}
+ nav{justify-content:center;gap:12px}
+ nav a{font-size:12px}
+ .logo{font-size:24px}
+ header>.btn{padding:10px 14px}
+ .hero{padding:50px 6%;min-height:440px}
+ .hero p{font-size:15px}
+ section{padding:38px 4%}
+ .heading{font-size:27px}
+ .categories,.products{gap:11px}
+ .cat img{height:125px}
+ .product img{height:135px}
+ .cat div,.product-info{padding:10px}
+ .cat h3,.product h3{font-size:14px}
+ .cat p,.product p{font-size:12px}
+ .price{font-size:17px}
+ .order{font-size:11px;padding:11px 3px}
+ .features{grid-template-columns:1fr}
+ input{width:100%}
+ .toolbar{align-items:stretch}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <a class="logo" href="#home" style="text-decoration:none">🌿 Gram<span>Bazaar</span></a>
+ <nav>
+  <a href="#home">होम</a>
+  <a href="#categories">कैटेगरी</a>
+  <a href="#products">सामान</a>
+  <a href="#about">हमारे बारे में</a>
+  <a href="#contact">संपर्क</a>
+ </nav>
+ <a class="btn" href="https://wa.me/919301094811" target="_blank">💬 WhatsApp</a>
+</header>
+
+<section class="hero" id="home">
+ <div class="hero-content">
+  <small>🌾 गाँव की कला • अपनी परंपरा</small>
+  <h1>Gram<span>Bazaar</span><br>गाँव का सामान,<br>आपके घर तक!</h1>
+  <p>मिट्टी के सुंदर बर्तन, लकड़ी का फर्नीचर और पारंपरिक हस्तशिल्प। अपने पसंदीदा सामान की फोटो देखें और WhatsApp पर ऑर्डर करें।</p>
+  <a class="btn" href="#products">🛍️ सामान देखें</a>
+  <a class="btn" style="background:#f2b766;color:#222;margin-left:7px" href="#about">हमारे बारे में</a>
+  <div class="location">📍 Shahdol, Madhya Pradesh</div>
+ </div>
+</section>
+
+<section id="categories">
+ <h2 class="heading">हमारी खास कैटेगरी</h2>
+ <p class="sub">देसी अंदाज और पारंपरिक सामान की दुनिया में आपका स्वागत है।</p>
+ <div class="categories">
+  <article class="cat">
+   <img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=600&q=80" alt="मिट्टी के बर्तन" loading="lazy">
+   <div><h3>🏺 मिट्टी के बर्तन</h3><p>घड़ा, कुल्हड़, हांडी और दीये</p><a class="btn" href="#mitti">देखें →</a></div>
+  </article>
+  <article class="cat">
+   <img src="https://images.unsplash.com/photo-1538688423619-a81d3f23454b?auto=format&fit=crop&w=600&q=80" alt="लकड़ी का फर्नीचर" loading="lazy">
+   <div><h3>🪵 लकड़ी का सामान</h3><p>मेज, कुर्सी और फर्नीचर</p><a class="btn" href="#lakdi">देखें →</a></div>
+  </article>
+  <article class="cat">
+   <img src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?auto=format&fit=crop&w=600&q=80" alt="हस्तशिल्प" loading="lazy">
+   <div><h3>🎨 हस्तशिल्प</h3><p>घर सजाने के सुंदर सामान</p><a class="btn" href="#handicraft">देखें →</a></div>
+  </article>
+  <article class="cat">
+   <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80" alt="गाँव का दृश्य" loading="lazy">
+   <div><h3>🌿 गाँव की पहचान</h3><p>प्रकृति और पारंपरिक जीवन</p><a class="btn" href="#about">और जानें →</a></div>
+  </article>
+ </div>
+</section>
+
+<section class="shop" id="products">
+ <h2 class="heading">हमारा देसी बाजार 🛍️</h2>
+ <p class="sub">ज्यादा फोटो देखें, अपना सामान चुनें और WhatsApp से पूछताछ करें।</p>
+ <div class="toolbar">
+  <h3>सभी उत्पाद</h3>
+  <input id="search" type="search" placeholder="🔎 सामान खोजें...">
+  <select id="filter" aria-label="कैटेगरी चुनें">
+   <option value="all">सभी कैटेगरी</option>
+   <option value="mitti">मिट्टी के बर्तन</option>
+   <option value="lakdi">लकड़ी का सामान</option>
+   <option value="handicraft">हस्तशिल्प</option>
+  </select>
+ </div>
+
+ <h3 class="group-title" id="mitti">🏺 मिट्टी के बर्तन</h3>
+ <div class="products">
+  <article class="product" data-cat="mitti" data-name="घड़ा मटका मिट्टी पानी">
+   <img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=500&q=80" alt="मिट्टी का घड़ा" loading="lazy">
+   <div class="product-info"><h3>मिट्टी का घड़ा</h3><p>पानी रखने के लिए पारंपरिक बर्तन</p><div class="price">₹120</div><button class="btn order" data-product="मिट्टी का घड़ा">WhatsApp पर पूछें</button></div>
+  </article>
+  <article class="product" data-cat="mitti" data-name="कुल्हड़ कप चाय">
+   <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=500&q=80" alt="कुल्हड़" loading="lazy">
+   <div class="product-info"><h3>मिट्टी के कुल्हड़</h3><p>चाय के लिए कुल्हड़ का सेट</p><div class="price">₹80 / सेट</div><button class="btn order" data-product="मिट्टी के कुल्हड़">WhatsApp पर पूछें</button></div>
+  </article>
+  <article class="product" data-cat="mitti" data-name="हांडी मिट्टी खाना">
+   <img src="https://images.unsplash.com/photo-1576021182211-9ea8dced3690?auto=format&fit=crop&w=500&q=80" alt="मिट्टी की हांडी" loading="lazy">
+   <div class="product-info"><h3>मिट्टी की हांडी</h3><p>रसोई के लिए पारंपरिक बर्तन</p><div class="price">₹250</div><button class="btn order" data-product="मिट्टी की हांडी">WhatsApp पर पूछें</button></div>
+  </article>
+  <article class="product" data-cat="mitti" data-name="दीया दीपक पूजा">
+   <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=500&q=80" alt="दीये" loading="lazy">
+   <div class="product-info"><h3>मिट्टी के दीये</h3><p>पूजा और सजावट के लिए</p><div class="price">₹50 / सेट</div><button class="btn order" data-product="मिट्टी के दीये">WhatsApp पर पूछें</button></div>
+  </article>
+ </div>
+
+ <h3 class="group-title" id="lakdi">🪵 लकड़ी का सामान</h3>
+ <div class="products">
+  <article class="product" data-cat="lakdi" data-name="लकड़ी मेज टेबल">
+   <img src="https://images.unsplash.com/photo-1538688423619-a81d3f23454b?auto=format&fit=crop&w=500&q=80" alt="लकड़ी की मेज" loading="lazy">
+   <div class="product-info"><h3>लकड़ी की मेज</h3><p>घर और काम के लिए</p><div class="price">₹1,200</div><button class="btn order" data-product="लकड़ी की मेज">WhatsApp पर पूछें</button></div>
+  </article>
+  <article class="product" data-cat="lakdi" data-name="लकड़ी कुर्सी chair">
+   <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=500&q=80" alt="कुर्सी" loading="lazy">
+   <div class="product-info"><h3>लकड़ी की कुर्सी</h3><p>बैठने के लिए फर्नीचर</p><div class="price">₹1,500</div><button class="btn order" data-product="लकड़ी की कुर्सी">WhatsApp पर पूछें</button></div>
+  </article>
+  <article class="product" data-cat="lakdi" data-name="लकड़ी बॉक्स डिब्बा">
+   <img src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&w=500&q=80" alt="लकड़ी का बॉक्स" loading="lazy">
+   <div class="product-info"><h3>लकड़ी का बॉक्स</h3><p>सामान रखने के लिए</p><div class="price">₹800</div><button class="btn order" data-product="लकड़ी का बॉक्स">WhatsApp पर पूछें</button></div>
+  </article>
+  <article class="product" data-cat="lakdi" data-name="लकड़ी स्टूल">
+   <img src="https://images.unsplash.com/photo-1499933374294-4584851497cc?auto=format&fit=crop&w=500&q=80" alt="लकड़ी का स्टूल" loading="lazy">
+   <div class="product-info"><h3>लकड़ी का स्टूल</h3><p>छोटा और उपयोगी फर्नीचर</p><div class="price">₹500</div><button class="btn order" data-product="लकड़ी का स्टूल">WhatsApp पर पूछें</button></div>
+  </article>
+ </div>
+
+ <h3 class="group-title" id="handicraft">🎨 हस्तशिल्प और सजावट</h3>
+ <div class="products">
+  <article class="product" data-cat="handicraft" data-name="हस्तशिल्प सजावट">
+   <img src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?auto=format&fit=crop&w=500&q=80" alt="हस्तशिल्प" loading="lazy">
+   <div class="product-info"><h3>देसी हस्तशिल्प</h3><p>घर की सजावट के लिए</p><div class="price">₹300</div><button class="btn order" data-product="देसी हस्तशिल्प">WhatsApp पर पूछें</button></div>
+  </article>
+  <article class="product" data-cat="handicraft" data-name="मिट्टी फूलदान">
+   <img src="https://images.unsplash.com/photo-1578500494198-246f612d3b3d?auto=format&fit=crop&w=500&q=80" alt="फूलदान" loading="lazy">
+   <div class="product-info"><h3>मिट्टी का फूलदान</h3><p>कमरे की सजावट के लिए</p><div class="price">₹220</div><button class="btn order" data-product="मिट्टी का फूलदान">WhatsApp पर पूछें</button></div>
+  </article>
+  <article class="product" data-cat="handicraft" data-name="हाथ से बना सजावटी सामान">
+   <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?auto=format&fit=crop&w=500&q=80" alt="हाथ से बना सामान" loading="lazy">
+   <div class="product-info"><h3>हाथ से बना सामान</h3><p>पारंपरिक कला से प्रेरित</p><div class="price">₹350</div><button class="btn order" data-product="हाथ से बना सजावटी सामान">WhatsApp पर पूछें</button></div>
+  </article>
+  <article class="product" data-cat="handicraft" data-name="घर सजावट गिफ्ट">
+   <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=500&q=80" alt="घर सजाने का सामान" loading="lazy">
+   <div class="product-info"><h3>घर की सजावट</h3><p>अपने घर के लिए सुंदर सामान</p><div class="price">₹400</div><button class="btn order" data-product="घर की सजावट का सामान">WhatsApp पर पूछें</button></div>
+  </article>
+ </div>
+ <p class="note">नोट: ये कीमतें उदाहरण हैं। असली कीमत और फोटो अपने सामान के अनुसार बदलें।</p>
+</section>
+
+<section id="about">
+ <div class="about">
+  <h2 class="heading">हमारे बारे में 🌿</h2>
+  <p>GramBazaar शाहडोल के लिए एक देसी बाजार की वेबसाइट है। यहाँ मिट्टी के बर्तन, लकड़ी के सामान और हस्तशिल्प की जानकारी दिखाई जा सकती है। अपने सामान की सही फोटो और कीमत जोड़कर ग्राहकों तक पहुँचें।</p>
+  <div class="features">
+   <div class="feature"><div style="font-size:30px">🏺</div><h3>देसी सामान</h3><p>पारंपरिक उत्पाद</p></div>
+   <div class="feature"><div style="font-size:30px">📍</div><h3>शाहडोल</h3><p>मध्य प्रदेश, भारत</p></div>
+   <div class="feature"><div style="font-size:30px">💬</div><h3>WhatsApp संपर्क</h3><p>सीधे पूछताछ करें</p></div>
+  </div>
+ </div>
+</section>
+
+<footer id="contact">
+ <h2 class="logo">🌿 Gram<span>Bazaar</span></h2>
+ <p>गाँव की मिट्टी, आपके घर तक!</p>
+ <p>📍 Shahdol, Madhya Pradesh</p>
+ <p>📱 9301094811</p>
+ <a class="btn" href="https://wa.me/919301094811" target="_blank">WhatsApp पर संपर्क करें</a>
+ <p style="margin-top:25px;font-size:12px">© <span id="year"></span> GramBazaar | Shahdol</p>
+</footer>
+
+<a class="btn wa-float" href="https://wa.me/919301094811" target="_blank">💬 WhatsApp ऑर्डर</a>
+
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
+
+const search=document.getElementById("search");
+const filter=document.getElementById("filter");
+const cards=[...document.querySelectorAll(".product")];
+
+function updateProducts(){
+ const q=search.value.trim().toLowerCase();
+ const cat=filter.value;
+ cards.forEach(card=>{
+  const matchesText=(card.dataset.name+" "+card.innerText).toLowerCase().includes(q);
+  const matchesCat=cat==="all"||card.dataset.cat===cat;
+  card.style.display=matchesText&&matchesCat?"":"none";
+ });
+ document.querySelectorAll(".group-title").forEach(title=>{
+  const group=title.nextElementSibling;
+  const visible=[...group.querySelectorAll(".product")].some(card=>card.style.display!=="none");
+  title.style.display=visible?"":"none";
+ });
+}
+search.addEventListener("input",updateProducts);
+filter.addEventListener("change",updateProducts);
+
+document.querySelectorAll(".order").forEach(button=>{
+ button.addEventListener("click",()=>{
+  const msg="Namaste GramBazaar! Mujhe "+button.dataset.product+
+  " ke baare mein jaankari chahiye. Kripya price aur availability batayein.";
+  window.open("https://wa.me/919301094811?text="+encodeURIComponent(msg),"_blank");
+ });
+});
+</script>
+</body>
+   </html>
+                                                                                 
